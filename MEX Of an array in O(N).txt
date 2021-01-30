@@ -1,0 +1,11 @@
+/// the smallest non negative integer that not exist in an array in O(n)
+/// MEX of an array 
+
+int MEX(int a[],int n)
+{
+    int cnt[n+9]={};
+	for (int i = 0; i < n; i++) ++cnt[a[i]];
+	for (int i = 0; i <= n; i++)
+		if (cnt[i]==0)return i;
+
+}

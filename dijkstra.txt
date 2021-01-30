@@ -1,0 +1,28 @@
+const int MX=1e5+9;
+vector<pair<ll,ll> > adj[MX];
+ll dis[MX];
+int parent[MX];///to print the path
+void dijkstra(int s)
+{
+    priority_queue<pll,vector<pll>,greater<pll>  >q;
+    q.push(mp(0,s));
+    dis[s]=0;
+    parent[1]=-1;
+    while(!q.empty())
+    {
+        ll  u=q.top().second;
+        q.pop();
+
+        for(ll i=0;i<adj[u].size();++i)
+        {
+            ll x=adj[u][i].first;
+            ll c=adj[u][i].second;
+            if(dis[u]+c <dis[x])
+            {
+                dis[x]=dis[u]+c;
+                q.push(mp(dis[x],x));
+                parent[x]=u;
+            }
+        }
+    }
+}
